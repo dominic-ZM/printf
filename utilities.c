@@ -10,6 +10,13 @@
 
 void process_char(int c, int *count)
 {
+	if (c == '\0')
+	{
+		putchar(c);
+		(*count)++;
+		return;
+	}
+
 	output_char(c, count);
 }
 
@@ -36,6 +43,11 @@ void process_normal(int c, int *count)
 
 void process_string(char *str, int *count)
 {
+	if (str == NULL)
+	{
+		process_string("(null)", count);
+		return;
+	}
 	while (*str)
 		output_char(*str++, count);
 }

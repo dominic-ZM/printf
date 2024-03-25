@@ -13,6 +13,11 @@
 
 void process_arguments(const char *format, va_list args, int *count)
 {
+	if (*format == '%' && *(format + 1) == '\0')
+	{
+		*count = -1;
+		return;
+	}
 	while (*format)
 	{
 		if (*format == '%')
@@ -30,6 +35,9 @@ void process_arguments(const char *format, va_list args, int *count)
 					process_percent(count);
 					break;
 				default:
+					process_char('%', count);
+					process_char(*format, count);
+					format++;
 					break;
 			}
 		} else
@@ -51,6 +59,8 @@ int _printf(const char *format, ...)
 	int count;
 	va_list args;
 
+	if (format == NULL)
+		return (-1);
 	count = 0;
 
 	va_start(args, format);
