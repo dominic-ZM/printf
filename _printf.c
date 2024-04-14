@@ -58,6 +58,7 @@ void handle_percent(const char *format, va_list args, int *count)
 			break;
 		default:
 			process_percent(count);
+			process_char(*format, count);
 			break;
 	}
 }
