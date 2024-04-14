@@ -87,12 +87,13 @@ int _printf(const char *format, ...)
 			format++;
 			handle_percent(format, args, &count);
 		}
-		if (*format == 92)
+		else if (*format == 92)
 		{
 			format++;
 			handle_backslash(format, &count);
 		}
-		process_normal(*format, &count);
+		else
+			process_normal(*format, &count);
 		format++;
 	}
 	va_end(args);
