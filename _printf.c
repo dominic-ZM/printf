@@ -56,6 +56,10 @@ void handle_percent(const char *format, va_list args, int *count)
 		case '%':
 			process_percent(count);
 			break;
+		case 'd':
+		case 'i':
+			process_signed_int(va_arg(args, int), count);
+			break;
 		default:
 			process_percent(count);
 			process_char(*format, count);

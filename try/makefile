@@ -1,13 +1,12 @@
 CC = gcc
-SRC = main6.c utilities.c _printf.c
+SRC = noone.c
 OBJ = $(SRC:%.c=%.o)
-NAME = printf
+NAME = one
 RM = rm
 CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format -g
 
-all: $(OBJ) main.h
+all: $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	$(MAKE) oclean
 clean:
 	$(RM) -f *~ .*.*sw* .*.*swo* $(NAME)
 oclean:

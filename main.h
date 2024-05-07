@@ -13,6 +13,7 @@ void process_percent(int *count);
 void handle_percent(const char *format, va_list args, int *count);
 void handle_backslash(const char *format, int *count);
 void process_string(char *str, int *count);
+void process_signed_int(int number, int *count);
 void process_normal(int c, int *count);
 void process_char(int c, int *count);
 

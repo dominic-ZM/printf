@@ -21,19 +21,6 @@ void process_char(int c, int *count)
 }
 
 /**
- * process_normal - handles normal chars
- * @c: the char to be handled
- * @count: how many characters printed so far
- *
- * Return: none
- */
-
-void process_normal(int c, int *count)
-{
-	output_char(c, count);
-}
-
-/**
  * process_string - handles %s flag
  * @str: the string to be printed
  * @count: number of characters printed so far
@@ -76,4 +63,56 @@ void output_char(int c, int *count)
 {
 		if (putchar(c))
 			(*count)++;
+}
+
+/**
+ * process_signed_int - handles the d and i flags
+ * @number: the integer to output
+ * @count: number of characters printed
+ *
+ * Return: none
+ */
+
+void process_signed_int(int number, int *count)
+{
+	int index;
+	int intermediate;
+	char buffer[12];
+	int is_int_min;
+
+	index = 0;
+	intermediate = 0;
+	if (number < 0)
+	{
+		outputchar('-', count);
+		if (number == INT_MIN)
+		{
+			number = INT_MAX;
+			buffer[index] = 8 + '0';
+			index++;
+			is_int_min = 1;
+		}
+		else
+			number = number * -1;
+	}
+	if (number == 0)
+	{
+		output_char('0', count);
+		return;
+	}
+	while (number > 0)
+	{
+		intermediate = number % 10;
+		number = number / 10;
+		if (is_int_min)
+		{
+			is_int_min = 0;
+			continue;
+		}
+		buffer[index] = intermediate + '0';
+		index++;
+	}
+	index--;
+	for (; index >= 0; index--)
+		output_char(buffer[index], count);
 }
