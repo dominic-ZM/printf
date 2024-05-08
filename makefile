@@ -1,5 +1,5 @@
 CC = gcc
-SRC = main6.c utilities.c _printf.c
+SRC = main6.c p_ut.c s_ut.c _printf.c
 OBJ = $(SRC:%.c=%.o)
 NAME = printf
 RM = rm

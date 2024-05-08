@@ -66,6 +66,18 @@ void handle_percent(const char *format, va_list args, int *count)
 			break;
 	}
 }
+/**
+ * process_normal - handles normal chars
+ * @c: the char to be handled
+ * @count: how many characters printed so far
+ *
+ * Return: none
+ */
+
+void process_normal(int c, int *count)
+{
+	output_char(c, count);
+}
 
 /**
  * _printf - produces output according to a format.

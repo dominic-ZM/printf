@@ -52,20 +52,6 @@ void process_percent(int *count)
 }
 
 /**
- * output_char - prints the specified char
- * @c: the specified char
- * @count: number of characters printed so far
- *
- * Return: none
- */
-
-void output_char(int c, int *count)
-{
-		if (putchar(c))
-			(*count)++;
-}
-
-/**
  * process_signed_int - handles the d and i flags
  * @number: the integer to output
  * @count: number of characters printed
@@ -84,7 +70,7 @@ void process_signed_int(int number, int *count)
 	intermediate = 0;
 	if (number < 0)
 	{
-		outputchar('-', count);
+		output_char('-', count);
 		if (number == INT_MIN)
 		{
 			number = INT_MAX;
