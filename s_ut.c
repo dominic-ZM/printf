@@ -102,3 +102,34 @@ void process_signed_int(int number, int *count)
 	for (; index >= 0; index--)
 		output_char(buffer[index], count);
 }
+
+/**
+ * process_conv_unsigned_to_bin - argument is converted to binary
+ * @number: the unsigned int to convert to binary
+ * @count: tracks how many characters printed
+ *
+ * Return: none
+ */
+
+void process_conv_unsigned_to_bin(unsigned int number, int *count)
+{
+	int i;
+	int binary[32];
+
+	if (number == 0)
+	{
+		output_char('0', count);
+		return;
+	}
+	i = 0;
+
+	while (number > 0)
+	{
+		binary[i] = '0' + number % 2;
+		number /= 2;
+		i++;
+	}
+	i--;
+	for (; i >= 0; i--)
+		output_char(binary[i], count);
+}

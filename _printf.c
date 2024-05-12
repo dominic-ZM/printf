@@ -47,6 +47,9 @@ void handle_percent(const char *format, va_list args, int *count)
 		return;
 	switch (*format)
 	{
+		case 'b':
+			process_conv_unsigned_to_bin(va_arg(args, unsigned int), count);
+			break;
 		case 'c':
 			process_char(va_arg(args, int), count);
 			break;
