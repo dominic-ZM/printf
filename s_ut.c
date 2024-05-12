@@ -68,6 +68,7 @@ void process_signed_int(int number, int *count)
 
 	index = 0;
 	intermediate = 0;
+	is_int_min = 0;
 	if (number < 0)
 	{
 		output_char('-', count);
@@ -95,8 +96,7 @@ void process_signed_int(int number, int *count)
 			is_int_min = 0;
 			continue;
 		}
-		buffer[index] = intermediate + '0';
-		index++;
+		buffer[index++] = intermediate + '0';
 	}
 	index--;
 	for (; index >= 0; index--)
